@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../lib/supabase";
 
 const useAuth = () => {
+    const [authUserName, setAuthUserName] = useState("")
     const [authEmail, setAuthEmail] = useState("")
     const [authPass, setAuthPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
@@ -21,12 +22,23 @@ const useAuth = () => {
         const {data, error} = await supabase.auth.signUp({
             email: authEmail,
             password: authPass,
+            options: {
+                data: {
+                    full_name: authUserName
+                }
+            }
+            
         })
+
+        if (!error && data.user) {
+            await supabase.auth.signOut()
+        }
 
         if (error) return setErro(error.message)
 
-        navigate('/')
-        
+        navigate('/login')
+
+        setAuthUserName("")        
         setAuthEmail("")
         setAuthPass("")
         setConfirmPass("")
@@ -46,7 +58,7 @@ const useAuth = () => {
         if (error) return setErro(error.message)
 
         if (data.user) {
-            console.log(data.user)
+            navigate('/')
         }
     }
 
@@ -54,6 +66,7 @@ const useAuth = () => {
 
     return {
         registarClick, loginClick,
+        authUserName, setAuthUserName,
         authEmail, setAuthEmail,
         authPass, setAuthPass,
         confirmPass, setConfirmPass,   
