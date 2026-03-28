@@ -1,7 +1,6 @@
 import useGetUser from "../hooks/useGetUser"
 import LinkBtn from "../styles/components/LinkBtn"
 import DivCentrada from "../styles/components/DivCentrada"
-import AddWorkout from "./workouts/AddWorkout"
 
 const Home = () => {
 
@@ -17,9 +16,16 @@ const Home = () => {
 
             <h2 className="m-5 text-lg text-verde">Bem-vindo de volta {userName}!</h2>
             
-            <LinkBtn to={`/adicionar/${userId}`}>
-                Adicionar
-            </LinkBtn>
+            <div className="flex flex-row justify-around items-center w-1/2 h-12 m-12 bg-verde-cinza box-content rounded-full">
+                <LinkBtn to={`/workouts/${userId}`}>
+                    Workouts
+                </LinkBtn>
+
+                <LinkBtn to={`/profile/${userId}`}>
+                    Profile
+                </LinkBtn>
+            </div>
+            
         </DivCentrada>
     )
 }

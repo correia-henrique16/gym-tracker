@@ -5,6 +5,7 @@ import supabase from "../lib/supabase"
 const useGetUser = () => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [showPopUp, setShowPopUp] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -14,11 +15,11 @@ const useGetUser = () => {
             if (error || !user) {
                 await supabase.auth.signOut()
                 navigate('/login')
-                setLoading(false)
             } else{
                 setUser(user)
-                setLoading(false)
             }
+            
+            setLoading(false)
         }
 
         getUser()
@@ -34,8 +35,13 @@ const useGetUser = () => {
         }
     }
 
+    const userLogOut = async() => {
+        await supabase.auth.signOut()
+        navigate('/login')
+    }
+
     return {
-        user, loading, userInfo
+        user, loading, userInfo, userLogOut, showPopUp, setShowPopUp
     }
 }
 

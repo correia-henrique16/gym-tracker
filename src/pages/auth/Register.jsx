@@ -1,5 +1,5 @@
 import useAuth from "../../hooks/useAuth"
-import { useNavigate } from "react-router-dom"
+import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import Button from "../../styles/components/Button"
 import Input from "../../styles/components/Input"
 import DivCentrada from "../../styles/components/DivCentrada"
@@ -11,8 +11,6 @@ const Register = () => {
         setConfirmPass, erro
     } = useAuth()
     
-    
-    const navigate = useNavigate()
 
     return (
         <DivCentrada className="flex flex-col items-center justify-center w-screen h-screen">
@@ -20,10 +18,7 @@ const Register = () => {
                 Register page
             </h2>
 
-            <button onClick={() => {navigate(-1)}}
-            className="fixed top-5 left-5 text-verde cursor-pointer z-2">
-                Voltar
-            </button>
+            <ButtonVoltar/>
 
             <form className="flex flex-col items-center w-full gap-4"
             onSubmit={registarClick}>

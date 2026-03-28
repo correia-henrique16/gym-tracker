@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom"
 
 const AddWorkout = () => {
 
-    const {uid} = useParams()
+    const {userId} = useParams()
 
     return(
         <div>
             <h1>Adicionar</h1>
-            <p>{uid}</p>
+            <p>{userId}</p>
 
             <form onSubmit={""}>
                 <label htmlFor="select-corpo">Parte do Corpo</label>

@@ -8,7 +8,6 @@ const useAuth = () => {
     const [authPass, setAuthPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
     const [erro, setErro] = useState(false)
-    // const [sucesso, setSucesso] = useState(false)
 
     const navigate = useNavigate()
 
@@ -42,7 +41,6 @@ const useAuth = () => {
         setAuthEmail("")
         setAuthPass("")
         setConfirmPass("")
-        // if (data) return setSucesso(data.message)
     }
 
     const loginClick = async (e) => {
@@ -61,8 +59,6 @@ const useAuth = () => {
             navigate('/')
         }
     }
-
-
 
     return {
         registarClick, loginClick,
