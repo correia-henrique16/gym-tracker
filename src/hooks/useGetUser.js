@@ -4,7 +4,7 @@ import supabase from "../lib/supabase"
 
 const useGetUser = () => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [userLoading, setLoading] = useState(true)
     const [showPopUp, setShowPopUp] = useState(false)
     const navigate = useNavigate()
 
@@ -26,6 +26,8 @@ const useGetUser = () => {
     }, [navigate])
 
     const userInfo = () => {
+        if (!user) return { userName: "", userEmail: "", userId: null };
+
         const userName = user.user_metadata.full_name
         const userEmail = user.email
         const userId = user.id
@@ -41,7 +43,7 @@ const useGetUser = () => {
     }
 
     return {
-        user, loading, userInfo, userLogOut, showPopUp, setShowPopUp
+        user, userLoading, userInfo, userLogOut, showPopUp, setShowPopUp
     }
 }
 

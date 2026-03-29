@@ -5,6 +5,7 @@ import supabase from "../../lib/supabase"
 import Button from "../../styles/components/Button"
 import Input from "../../styles/components/Input"
 import DivCentrada from "../../styles/components/DivCentrada"
+import imgInicial from "../../assets/barbell.png"
 
 const Login = () => {
 
@@ -28,7 +29,9 @@ const Login = () => {
 
     return (
         <DivCentrada className="flex flex-col items-center justify-center w-screen h-screen">
-            <h2 className="m-10 text-6xl font-bold text-texto">
+            <img src={imgInicial} alt="Barbell" className="w-13"/>
+
+            <h2 className="m-10 text-5xl font-bold text-texto text-center">
                 Login page
             </h2>
 

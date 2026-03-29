@@ -19,12 +19,17 @@ const Profile = () => {
 
             <ButtonVoltar />
 
-            <h1>Profile</h1>
+                <h1 className="m-5 text-texto text-5xl font-bold">Profile</h1>
 
-            <h2>{userName}</h2>
-            <p>{userEmail}</p>
 
-            <LinkBtn to={`/profile/${userId}/edit`}>Edit Profile</LinkBtn>
+            <div className="flex flex-col justify-center items-center m-8">
+                <h2 className="m-3 text-verde text-3xl">{userName}</h2>
+                <p className="m-3 text-verde text-1xl">{userEmail}</p>
+            </div>
+
+
+
+            <LinkBtn to={`/profile/edit`}>Edit Profile</LinkBtn>
 
             <Button onClick={() => setShowPopUp(true)}>Log Out</Button>
 

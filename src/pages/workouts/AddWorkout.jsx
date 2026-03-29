@@ -1,10 +1,17 @@
 import useGetUser from "../../hooks/useGetUser"
 import useWorkouts from "../../hooks/useWorkouts"
-import { useParams } from "react-router-dom"
 
 const AddWorkout = () => {
 
-    const {userId} = useParams()
+    const {userInfo, userLoading} = useGetUser()
+
+    const {userId} = userInfo()
+
+    const {} = useWorkouts(userId)
+
+
+
+    if (userLoading) return <p>A carregar...</p>
 
     return(
         <div>
