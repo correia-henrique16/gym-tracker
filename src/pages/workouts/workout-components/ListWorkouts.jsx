@@ -2,11 +2,11 @@ import deleteImg from '../../../assets/delete.png'
 import editImg from '../../../assets/edit.png'
 import { Link } from 'react-router-dom'
 
-const ListWorkouts = ({listaWorkouts}) => {
+const ListWorkouts = ({listaWktExerc}) => {
 
 
     return(
-        listaWorkouts.map((workout) => {
+        listaWktExerc.map((workout) => {
                     
             const id = workout.id
             // const nome_exercicio = workout.exercicio?.nome_exercicio

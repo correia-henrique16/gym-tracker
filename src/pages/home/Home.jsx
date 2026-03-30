@@ -1,11 +1,11 @@
-import useGetUser from "../../hooks/useGetUser"
+import useUserContext from "../../hooks/useUserContext"
 import LinkBtn from "../../styles/components/LinkBtn"
 import DivCentrada from "../../styles/components/DivCentrada"
 import imgInicial from "../../assets/barbell.png"
 
 const Home = () => {
 
-    const {userLoading, userInfo} = useGetUser()
+    const {userLoading, userInfo} = useUserContext()
 
 
     if (userLoading) return <p>A verificar user...</p>

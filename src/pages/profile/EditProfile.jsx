@@ -1,6 +1,6 @@
 import DivCentrada from "../../styles/components/DivCentrada"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
-import useGetUser from "../../hooks/useGetUser"
+import useUserContext from "../../hooks/useUserContext"
 import useAuth from "../../hooks/useAuth"
 import { useEffect, useState } from "react"
 import EditGeneral from "./edit-components/EditGeneral"
@@ -10,7 +10,7 @@ const EditProfile = () => {
 
     const [editPass, setEditPass] = useState(false)
 
-    const {userInfo, userLoading} = useGetUser()
+    const {userInfo, userLoading} = useUserContext()
 
     const {userName, userEmail} = userInfo()
 

@@ -29,7 +29,7 @@ const ListExercises = ({exercicios, filtroZona, filtroEspecifico, chooseImg}) =>
 
                         <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 bg-verde-cinza/80 rounded-2xl
                         pointer-events-none group-hover:pointer-events-auto">
-                            <Link to={`/workouts/${id}/${nome}`} className="h-full justify-center flex items-center text-texto font-bold">
+                            <Link to={`/workouts/${id}`} className="h-full justify-center flex items-center text-texto font-bold">
                                 Ver exercicio
                             </Link>
                         </div>

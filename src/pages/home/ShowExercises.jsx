@@ -1,6 +1,4 @@
-import useGetUser from "../../hooks/useGetUser"
-import useWorkouts from "../../hooks/useWorkouts"
-import { useEffect} from "react"
+import useDbContext from "../../hooks/useDbContext"
 import useFiltros from "../../hooks/useFiltros"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import DivCentrada from "../../styles/components/DivCentrada"
@@ -9,17 +7,12 @@ import ListExercises from "./home-components/ListExercises"
 
 const ShowExercises = () => {
 
-    // const {userInfo, userLoading} = useGetUser()
+    // const {userInfo, userLoading} = useUserContext()
 
     // const {userId} = userInfo()
 
-    const {buscarZonas, zonasCorpo, buscarExercicios, exercicios, buscarEspecificos, especificos, loading, chooseImg} = useWorkouts()
-    
-    useEffect(()=> {
-        buscarZonas()
-        buscarExercicios()
-        buscarEspecificos()
-    }, [])
+    const {zonasCorpo, exercicios, especificos, workoutsLoading, staticLoading, chooseImg} = useDbContext()
+
 
     const {filtroZona, setFiltroZona, filtroEspecifico, setFiltroEspecifico} = useFiltros()
 
@@ -27,7 +20,7 @@ const ShowExercises = () => {
     
 
     // if (userLoading) return <p>A carregar...</p>
-    if (loading) return <p>A carregar...</p>
+    if (staticLoading || workoutsLoading) return <p>A carregar...</p>
 
     
     return (

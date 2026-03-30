@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import useGetUser from "../../hooks/useGetUser"
-import useWorkouts from "../../hooks/useWorkouts"
+import useUserContext from "../../hooks/useUserContext"
+import useDbContext from "../../hooks/useDbContext"
 import { useEffect } from "react"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import DivCentrada from "../../styles/components/DivCentrada"
@@ -10,25 +10,26 @@ import addImg from '../../assets/add.png'
 
 const ShowWorkouts = () => {
 
-    const {exId, exNome} = useParams()
+    const {exId} = useParams()
 
-    const {userInfo, userLoading} = useGetUser()
+    const {userInfo, userLoading} = useUserContext()
 
     const {userId} = userInfo()
 
-    const {buscarWorkouts, loading, listaWorkouts} = useWorkouts()
+    const {workoutsLoading, staticLoading, getExerById, listaWorkouts} = useDbContext()
+
     
-    useEffect(()=> {
-        if (userId) {
-            buscarWorkouts(userId, exId)
-        }
-
-    }, [userId, exId])
-
-
-
+    
     if (userLoading) return <p>A carregar...</p>
-    if (loading) return <p>A carregar treinos...</p>
+    if (workoutsLoading || staticLoading) return <p>A carregar treinos...</p>
+
+
+    const listaWktExerc = listaWorkouts.filter(wkt => wkt.exercicio.id == exId)
+
+
+
+    const {exNome} = getExerById(exId)
+
 
     
     return (
@@ -37,10 +38,10 @@ const ShowWorkouts = () => {
 
             <ButtonVoltar />
 
-            <ListWorkouts listaWorkouts={listaWorkouts} />
+            <ListWorkouts listaWktExerc={listaWktExerc} />
 
 
-            <Link className="fixed top-5 right-5 text-verde cursor-pointer z-2 hover:opacity-50">
+            <Link to={`/workouts/${exId}/adicionar`} className="fixed top-5 right-5 text-verde cursor-pointer z-2 hover:opacity-50">
                 <img src={addImg} alt="Adicionar" className="w-13"/>
             </Link>
 

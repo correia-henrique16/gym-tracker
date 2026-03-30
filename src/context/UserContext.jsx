@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react"
+import { createContext, useState, useEffect  } from "react"
 import { useNavigate } from "react-router-dom"
 import supabase from "../lib/supabase"
 
-const useGetUser = () => {
+export const UserContext = createContext(null)
+
+const UserProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [userLoading, setLoading] = useState(true)
     const [showPopUp, setShowPopUp] = useState(false)
     const navigate = useNavigate()
+
+
 
     useEffect(() => {
         const getUser = async () => {
@@ -23,7 +27,27 @@ const useGetUser = () => {
         }
 
         getUser()
-    }, [navigate])
+
+        const {data: authListener} = supabase.auth.onAuthStateChange((event, session) => {
+            if (event == 'SIGNED_OUT') {
+                setUser(null)
+                navigate('/login')
+            } else if (event == 'SIGNED_IN') {
+                setUser(session.user)
+            }
+
+        })
+
+
+        return () => {
+            if (authListener) {
+                authListener.subscription.unsubscribe()
+            }
+        }
+        
+    }, [])
+
+
 
     const userInfo = () => {
         if (!user) return { userName: "", userEmail: "", userId: null };
@@ -37,14 +61,22 @@ const useGetUser = () => {
         }
     }
 
+
     const userLogOut = async() => {
         await supabase.auth.signOut()
         navigate('/login')
     }
 
-    return {
-        user, userLoading, userInfo, userLogOut, showPopUp, setShowPopUp
-    }
+
+
+
+
+
+    return(
+        <UserContext.Provider value={{user, userLoading, userInfo, userLogOut, showPopUp, setShowPopUp}}>
+            {children}
+        </UserContext.Provider>
+    )
 }
 
-export default useGetUser
+export default UserProvider

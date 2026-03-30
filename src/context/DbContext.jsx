@@ -1,30 +1,54 @@
-import { useState } from "react"
+import { createContext, useState, useEffect } from "react";
 import supabase from "../lib/supabase"
 import chestImg from "../assets/chest.png"
 import backImg from "../assets/back.png"
 import armImg from "../assets/arm.png"
 import legImg from "../assets/leg.png"
 import shoulderImg from "../assets/shoulder.png"
+import useUserContext from "../hooks/useUserContext";
 
-const useWorkouts = () => {
+export const DbContext = createContext(null)
+
+const DbProvider = ({children}) => {
     const [listaWorkouts, setListaWorkouts] = useState([])
     const [zonasCorpo, setZonasCorpo] = useState([])
     const [exercicios, setExercicios] = useState([])
     const [especificos, setEspecificos] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [sitios, setSitios] = useState([])
+    const [staticLoading, setStaticLoading] = useState(false)
+    const [workoutsLoading, setWorkoutsLoading] = useState(false)
 
-    const buscarWorkouts = async (userId, exercId = null) => {
+    const {userInfo} = useUserContext()
+
+    const {userId} = userInfo()
+
+    useEffect(() => {
+        setStaticLoading(true)
+        buscarZonas()
+        buscarSitios()
+        buscarExercicios()
+        buscarEspecificos()
+        setStaticLoading(false)
+    }, [])
+
+    useEffect(() => {
+        if (userId){
+            setWorkoutsLoading(true)
+            buscarWorkouts(userId)
+            setWorkoutsLoading(false)
+        }
+        
+    }, [userId])
+
+    const buscarWorkouts = async (userId) => {
 
         if (!userId || userId === "undefined") {
             console.log("Waiting ID...");
             return;
         }
 
-        setLoading(true);
 
-
-
-        let query = supabase
+        const query = supabase
         .from('registos')
         .select(`
             id, peso, reps, data,
@@ -39,10 +63,6 @@ const useWorkouts = () => {
         `)
         .eq('user_id', userId)
 
-        if (exercId) {
-            query = query.eq('exercicio_id', exercId)
-        }
-
 
         const {data, error} = await query
 
@@ -54,13 +74,9 @@ const useWorkouts = () => {
             setListaWorkouts(data)
         }
         
-        setLoading(false)
     }
 
     const buscarZonas = async () => {
-
-        setLoading(true)
-
 
         const {data, error} = await supabase
         .from('corpo')
@@ -73,12 +89,22 @@ const useWorkouts = () => {
             setZonasCorpo(data)
         }
 
-        setLoading(false)
+    }
+
+    const buscarSitios = async () => {
+        const {data, error} = await supabase
+        .from('sitio')
+        .select('*')
+
+
+        if (error){
+            console.error('Erro ao buscar sitios: ',error)
+        } else{
+            setSitios(data)
+        }
     }
 
     const buscarExercicios = async () => {
-        setLoading(true)
-
 
         const {data, error} = await supabase
         .from('exercicio')
@@ -96,12 +122,9 @@ const useWorkouts = () => {
         } else {
             setExercicios(data)
         }
-
-        setLoading(false)
     }
 
     const buscarEspecificos = async () => {
-        setLoading(true)
 
         const {data, error} = await supabase
         .from('especifico')
@@ -118,31 +141,46 @@ const useWorkouts = () => {
     }
 
     const chooseImg = (zonaId) => {
-        let img
-        switch(zonaId) {
-            case 1: img = chestImg
-            break;
-            case 2: img = backImg
-            break;
-            case 3: img = armImg
-            break;
-            case 4: img = legImg
-            break;
-            case 5: img = shoulderImg
-            break;
+        const imgs = {
+            1: chestImg,
+            2: backImg,
+            3: armImg,
+            4: legImg,
+            5: shoulderImg
+        }
+        
+        return imgs[zonaId] || null
+    }
 
+    const getExerById = (exId) => {
+        const exercicio = exercicios.find(exerc => exerc.id == exId)
+
+        if (!exercicio) {
+            return{
+                exNome: "",
+                exEspecificoId: "",
+                exEspecificoNome: ""
+            }
         }
 
-        return img
+
+        return{
+            exNome: exercicio.nome_exercicio,
+            exEspecificoId: exercicio.especifico?.id,
+            exEspecificoNome: exercicio.especifico?.especifico_nome
+        }
     }
 
-    return {
-        buscarWorkouts, listaWorkouts,
-        buscarZonas, zonasCorpo,
-        buscarExercicios, exercicios,
-        buscarEspecificos, especificos,
-        chooseImg, loading
-    }
+
+
+    return (
+        <DbContext.Provider value={{listaWorkouts, zonasCorpo, sitios, exercicios, especificos,
+         chooseImg, staticLoading, workoutsLoading, getExerById}}>
+
+            {children}
+
+        </DbContext.Provider>
+    )
 }
 
-export default useWorkouts
+export default DbProvider

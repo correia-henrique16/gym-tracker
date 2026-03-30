@@ -2,12 +2,12 @@ import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import LinkBtn from "../../styles/components/LinkBtn"
 import Button from "../../styles/components/Button"
 import DivCentrada from "../../styles/components/DivCentrada"
-import useGetUser from "../../hooks/useGetUser"
+import useUserContext from "../../hooks/useUserContext"
 import ConfirmModel from "../../styles/components/ConfirmModel"
 
 
 const Profile = () => {
-    const {userInfo, loading, userLogOut, showPopUp, setShowPopUp} = useGetUser()
+    const {userInfo, loading, userLogOut, showPopUp, setShowPopUp} = useUserContext()
 
     if (loading) return <p>A verificar user...</p>
 
@@ -19,7 +19,7 @@ const Profile = () => {
 
             <ButtonVoltar />
 
-                <h1 className="m-5 text-texto text-5xl font-bold">Profile</h1>
+            <h1 className="m-5 text-texto text-5xl font-bold">Profile</h1>
 
 
             <div className="flex flex-col justify-center items-center m-8">
