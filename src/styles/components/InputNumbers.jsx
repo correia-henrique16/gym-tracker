@@ -1,4 +1,4 @@
-const Input = ({label, id, className = "", ...props}) => {
+const InputNumbers = ({label, id, className = "", ...props}) => {
     return(
         <div className="w-3/5 flex flex-col justify-center items-center">
             {label && (
@@ -16,4 +16,4 @@ const Input = ({label, id, className = "", ...props}) => {
     )
 }
 
-export default Input
+export default InputNumbers

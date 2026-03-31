@@ -1,5 +1,5 @@
 import Button from "../../../styles/components/Button"
-import Input from "../../../styles/components/Input"
+import InputAuth from "../../../styles/components/InputAuth"
 
 const EditGeneral = ({authUserName, setAuthUserName, authEmail, setAuthEmail, editarClick, erro, setEditPass}) => {
     return(
@@ -7,11 +7,11 @@ const EditGeneral = ({authUserName, setAuthUserName, authEmail, setAuthEmail, ed
             <form className="flex flex-col items-center w-full gap-4"
              onSubmit={editarClick}>
 
-                <Input label="UserName" type="text" id="username-input" required
+                <InputAuth label="UserName" type="text" id="username-input" required
                     value={authUserName} onChange={e => setAuthUserName(e.target.value)}
                 />
 
-                <Input label="Email" type="email" id="email-input" required
+                <InputAuth label="Email" type="email" id="email-input" required
                     value={authEmail} onChange={e => setAuthEmail(e.target.value)}
                 />
                 

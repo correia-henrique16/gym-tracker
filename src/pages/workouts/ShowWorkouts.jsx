@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom"
 import useUserContext from "../../hooks/useUserContext"
 import useDbContext from "../../hooks/useDbContext"
-import { useEffect } from "react"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import DivCentrada from "../../styles/components/DivCentrada"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import ListWorkouts from "./workout-components/ListWorkouts"
 import addImg from '../../assets/add.png'
+import useWorkouts from "../../hooks/useWorkouts"
+import { useState } from "react"
 
 const ShowWorkouts = () => {
 
+    const navigate = useNavigate()
+
+    const [idSelecionado, setIdSelecionado] = useState()
+
     const {exId} = useParams()
 
-    const {userInfo, userLoading} = useUserContext()
+    const {delWorkout} = useWorkouts()
 
-    const {userId} = userInfo()
+    const {userLoading, showPopUp, setShowPopUp} = useUserContext()
 
     const {workoutsLoading, staticLoading, getExerById, listaWorkouts} = useDbContext()
 
@@ -31,6 +36,15 @@ const ShowWorkouts = () => {
     const {exNome} = getExerById(exId)
 
 
+    const handleDelete = async (e, wktId) => {
+        e.preventDefault()
+
+        delWorkout(wktId)
+
+        
+    }
+
+
     
     return (
         <DivCentrada>
@@ -38,12 +52,14 @@ const ShowWorkouts = () => {
 
             <ButtonVoltar />
 
-            <ListWorkouts listaWktExerc={listaWktExerc} />
+            <ListWorkouts listaWktExerc={listaWktExerc} handleDelete={handleDelete} showPopUp={showPopUp} setShowPopUp={setShowPopUp} idSelecionado={idSelecionado} setIdSelecionado={setIdSelecionado} />
 
 
             <Link to={`/workouts/${exId}/adicionar`} className="fixed top-5 right-5 text-verde cursor-pointer z-2 hover:opacity-50">
                 <img src={addImg} alt="Adicionar" className="w-13"/>
             </Link>
+
+            
 
         </DivCentrada>
         

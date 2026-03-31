@@ -10,6 +10,7 @@ import EditProfile from './pages/profile/EditProfile.jsx'
 import ShowWorkouts from './pages/workouts/ShowWorkouts.jsx'
 import UserProvider from './context/UserContext.jsx'
 import DbProvider from './context/DbContext.jsx'
+import EditWorkout from './pages/workouts/EditWorkout.jsx'
 
 
 const RootLayout = () => {
@@ -33,6 +34,7 @@ function App() {
         {path: "/", element: <Home />},
         {path: "/exercises", element: <ShowExercises />},
         {path: "/workouts/:exId/adicionar", element: <AddWorkout />},
+        {path: "/workouts/:wktId/editar", element: <EditWorkout />},
         {path: "/workouts/:exId", element:<ShowWorkouts />},
         {path: "/profile", element:<Profile />},
         {path: "/profile/edit", element:<EditProfile />}

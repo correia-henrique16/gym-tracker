@@ -1,7 +1,7 @@
 import useAuth from "../../hooks/useAuth"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import Button from "../../styles/components/Button"
-import Input from "../../styles/components/Input"
+import InputAuth from "../../styles/components/InputAuth"
 import DivCentrada from "../../styles/components/DivCentrada"
 
 const Register = () => {
@@ -24,20 +24,20 @@ const Register = () => {
             <form className="flex flex-col items-center w-full gap-4"
             onSubmit={registarClick}>
 
-                <Input label="User Name" type="text" placeholder="User Name" id="name-input" maxLength="20" required
+                <InputAuth label="User Name" type="text" placeholder="User Name" id="name-input" maxLength="20" required
                     value={authUserName} onChange={e => setAuthUserName(e.target.value)} 
                 />
 
-                <Input label="Email" type="email" placeholder="email@email.com" id="email-input" required
+                <InputAuth label="Email" type="email" placeholder="email@email.com" id="email-input" required
                     value={authEmail} onChange={e => setAuthEmail(e.target.value)}
                     
                 />
 
-                <Input label="Password" type="password" id="pass-input" minLength="6" required
+                <InputAuth label="Password" type="password" id="pass-input" minLength="6" required
                     value={authPass} onChange={e => setAuthPass(e.target.value)}
                 />
 
-                <Input label="Confirmar Password" type="password" id="confirm-pass-input" required
+                <InputAuth label="Confirmar Password" type="password" id="confirm-pass-input" required
                     value={confirmPass} onChange={e => setConfirmPass(e.target.value)}            
                 />
                 

@@ -171,11 +171,36 @@ const DbProvider = ({children}) => {
         }
     }
 
+    const getWorkoutById = (workoutId) => {
+        const workout = listaWorkouts.find(w => w.id == workoutId)
+
+        if (!workout) {
+            return {
+                wktNomeEx: "",
+                wktPeso: "",
+                wktReps: "",
+                wktData: "",
+                wktSitio: ""
+            }
+        }
+
+        return{
+            wktNomeEx: workout.exercicio?.nome_exercicio,
+            wktPeso: workout.peso,
+            wktReps: workout.reps,
+            wktData: new Date(workout.data).toLocaleDateString('pt-PT'),
+            wktSitio: workout.sitio?.nome_sitio,
+            wktSitioId: workout.sitio?.id
+        }
+
+
+    }
+
 
 
     return (
         <DbContext.Provider value={{listaWorkouts, zonasCorpo, sitios, exercicios, especificos,
-         chooseImg, staticLoading, workoutsLoading, getExerById}}>
+         chooseImg, staticLoading, workoutsLoading, getExerById, getWorkoutById, buscarWorkouts, setListaWorkouts}}>
 
             {children}
 

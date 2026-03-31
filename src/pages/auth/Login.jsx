@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth"
 import { Link, useNavigate } from "react-router-dom"
 import supabase from "../../lib/supabase"
 import Button from "../../styles/components/Button"
-import Input from "../../styles/components/Input"
+import InputAuth from "../../styles/components/InputAuth"
 import DivCentrada from "../../styles/components/DivCentrada"
 import imgInicial from "../../assets/barbell.png"
 
@@ -38,11 +38,11 @@ const Login = () => {
             <form className="flex flex-col items-center w-full gap-4"
              onSubmit={loginClick}>
 
-                <Input label="Email" type="email" placeholder="email@email.com" id="email-input" required
+                <InputAuth label="Email" type="email" placeholder="email@email.com" id="email-input" required
                     value={authEmail} onChange={e => setAuthEmail(e.target.value)}
                 />
 
-                <Input label="Password" type="password" id="pass-input" required
+                <InputAuth label="Password" type="password" id="pass-input" required
                     value={authPass} onChange={e => setAuthPass(e.target.value)}
                 />
                 

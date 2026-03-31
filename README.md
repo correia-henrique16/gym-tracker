@@ -1,18 +1,25 @@
-# React + Vite
+# Gym Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **Gym Tracker** é uma aplicação web focada no registo e acompanhamento de treinos de musculação. Desenvolvida para a monitorização do progresso do utilizador, de forma simples.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades Principais
 
-## React Compiler
+- CRUD Completo de Registos
+- Exercícios organizados por zona muscular e grupos específicos.
+- Sistema de autenticação simples com o Supabase Auth
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Stack Tecnológica
 
-Note: This will impact Vite dev & build performances.
+- React.js
+- Supabase (DataBase)
+- Tailwind CSS (UI)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## O que aprendi
+
+- **Integração com Supabase:** Gerir a base de dados, incluindo a implementação das operações CRUD;
+- **Context API:** Centrar os dados dos utilizadores e dos treinos para guardar estados para toda a aplicação;
+- **Segurança de dados:** Implementei filtros pelo id do user e lógica de proteção de registos para garantir que cada utilizador apenas acede a manipula os seus próprios dados;

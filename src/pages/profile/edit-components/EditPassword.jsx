@@ -1,5 +1,5 @@
 import Button from "../../../styles/components/Button"
-import Input from "../../../styles/components/Input"
+import InputAuth from "../../../styles/components/InputAuth"
 
 const EditPassword = ({authPass, setAuthPass, confirmPass, setConfirmPass, erro, editarPassClick, setEditPass}) => {
     return (
@@ -7,11 +7,11 @@ const EditPassword = ({authPass, setAuthPass, confirmPass, setConfirmPass, erro,
             <form className="flex flex-col items-center w-full gap-4"
              onSubmit={editarPassClick}>
 
-                <Input label="New Password" type="password" id="pass-input" minLength="6" required
+                <InputAuth label="New Password" type="password" id="pass-input" minLength="6" required
                     value={authPass} onChange={e => setAuthPass(e.target.value)}
                 />
 
-                <Input label="Confirm Password" type="password" id="confirm-input" required
+                <InputAuth label="Confirm Password" type="password" id="confirm-input" required
                     value={confirmPass} onChange={e => setConfirmPass(e.target.value)}
                 />
                 

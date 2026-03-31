@@ -2,8 +2,9 @@
 
 @theme {
   --color-verde: #A3E635;
+  --color-verde-hover: #7DB02A;
   --color-fundo: #393E41;
   --color-texto: #E9F1F7;
   --color-verde-cinza: #748B75;
-  --color-verde-cinza-hover: #819882;
+  --color-verde-cinza-hover: #576958;
 }

@@ -1,32 +1,37 @@
-import useUserContext from "../../hooks/useUserContext"
-import useDbContext from "../../hooks/useDbContext"
-import { useParams } from "react-router-dom"
-import ButtonVoltar from "../../styles/components/ButtonVoltar"
-import DivCentrada from "../../styles/components/DivCentrada"
-import Button from "../../styles/components/Button"
-import InputNumbers from "../../styles/components/InputNumbers"
+import { useNavigate, useParams } from "react-router-dom"
 import useWorkouts from "../../hooks/useWorkouts"
-import { useNavigate } from "react-router-dom"
+import useDbContext from "../../hooks/useDbContext"
+import ButtonVoltar from "../../styles/components/ButtonVoltar"
+import InputNumbers from "../../styles/components/InputNumbers"
+import Button from "../../styles/components/Button"
+import DivCentrada from "../../styles/components/DivCentrada"
+import { useEffect } from "react"
 
-const AddWorkout = () => {
+const EditWorkout = () => {
     const navigate = useNavigate()
 
-    const {exId} = useParams()
+    const {wktId} = useParams()
 
-    const {addWorkout, sitioEscolhido, setSitioEscolhido, peso, setPeso, reps, setReps, submitting} = useWorkouts()
+    const {editWorkout, sitioEscolhido, setSitioEscolhido, peso, setPeso, reps, setReps, submitting} = useWorkouts()
 
-    const {workoutsLoading, staticLoading, getExerById, sitios} = useDbContext()
+    useEffect(() => {
+        setPeso(wktPeso)
+        setReps(wktReps)
+        setSitioEscolhido(wktSitioId)
+    }, [])
+
+    const {workoutsLoading, staticLoading, sitios, getWorkoutById} = useDbContext()
 
 
     if (workoutsLoading || staticLoading) return <p>A carregar treinos...</p>
 
 
-    const {exNome} = getExerById(exId)
+    const {wktNomeEx, wktPeso, wktReps, wktData, wktSitioId} = getWorkoutById(wktId)
 
-    const handleAdicionar = async (e) => {
+    const handleEditar = async (e) => {
         e.preventDefault()
 
-        if (await addWorkout(exId)){
+        if (await editWorkout(wktId)){
             navigate(-1)
         }
         
@@ -36,10 +41,15 @@ const AddWorkout = () => {
         <DivCentrada>
             <ButtonVoltar />
 
-            <h1>Adicionar</h1>
-            <h2>{exNome}</h2>
+            <h1>Editar</h1>
 
-            <form onSubmit={(e) => handleAdicionar(e)}>
+            <div>
+                <h2>{wktNomeEx}</h2>
+                <h3>{wktData}</h3>
+            </div>
+           
+
+            <form onSubmit={(e) => handleEditar(e)}>
 
                 <InputNumbers label="Peso" id="peso-input" required type="number" min="1" max="1000"
                 onChange={(e) => setPeso(e.target.value)} value={peso}/>
@@ -69,7 +79,7 @@ const AddWorkout = () => {
                 </fieldset>
                 
                 <Button type="submit" disabled={submitting}>
-                    {submitting ? "A Adicionar..." : "Submit"}
+                    {submitting ? "A Editar..." : "Editar"}
                 </Button>
             </form>
         </DivCentrada>
@@ -77,4 +87,4 @@ const AddWorkout = () => {
     )
 }
 
-export default AddWorkout
+export default EditWorkout
