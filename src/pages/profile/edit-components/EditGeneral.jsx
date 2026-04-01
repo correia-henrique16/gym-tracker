@@ -15,17 +15,23 @@ const EditGeneral = ({authUserName, setAuthUserName, authEmail, setAuthEmail, ed
                     value={authEmail} onChange={e => setAuthEmail(e.target.value)}
                 />
                 
-                <Button type="submit">
-                    Edit
-                </Button>
+                <div className="flex gap-5">
+                    <Button type="submit">
+                        Edit
+                    </Button>
+
+                    <Button onClick={() => setEditPass(true)}>
+                        Change PassWord
+                    </Button>
+
+                </div>
+                
 
             </form>
 
             {erro && <p>{erro}</p>}
 
-            <Button onClick={() => setEditPass(true)}>
-                Change PassWord
-            </Button>
+            
         </>
     )
 }

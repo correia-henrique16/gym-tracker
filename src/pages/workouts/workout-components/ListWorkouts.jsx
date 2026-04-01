@@ -20,30 +20,38 @@ const ListWorkouts = ({listaWktExerc, handleDelete, showPopUp, setShowPopUp, idS
                 // const nome_zona = workout.exercicio?.especifico?.corpo?.nome_zona
                 
                 return (
-                    <ul key={id} className="relative group flex justify-between items-center w-11/12 h-20 bg-verde-cinza p-2 rounded-full text-center">
-                        <li className="w-1/3">{dataFormatada}</li>
+                    <ul key={id} className="relative group flex justify-between items-center w-full max-w-4xl h-20 bg-verde-cinza/40 backdrop-blur-sm border-2 border-verde/30 hover:border-verde rounded-full px-6 transition-all duration-300 shadow-sm list-none mb-4">
+                        
+                        <li className="w-1/3 text-left font-semibold text-texto text-base tracking-tight">
+                            {dataFormatada}
+                        </li>
 
-                        <div className="flex flex-col justify-between h-full items-center w-1/3">
-                            <li>{peso}</li>
-                            <li>{reps}</li>
+                        <div className="w-1/3 flex flex-col justify-around items-center h-full">
+                            <li className="font-bold text-texto text-lg">{peso}</li>
+                            <li className="text-verde text-base font-bold">{reps}</li>
                         </div>
                         
-                        <li className="w-1/3">{sitio}</li>
+                        <li className="w-1/3 text-right text-verde font-medium text-base tracking-wider">
+                            {sitio}
+                        </li>
 
-                        <div className="absolute inset-0 flex justify-around px-10 items-center opacity-0 group-hover:opacity-100 bg-verde-cinza/80 rounded-full
-                        pointer-events-none group-hover:pointer-events-auto">
-                            <Link to={`/workouts/${id}/editar`} className='hover:opacity-50 cursor-pointer'>
-                                <img src={editImg} alt="Edit" className='max-h-full w-14' />
+
+
+
+                        <div className="absolute inset-0 flex justify-around px-20 items-center opacity-0 group-hover:opacity-100 bg-verde-cinza/90 backdrop-blur-sm rounded-full transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
+                            
+                            <Link to={`/workouts/${id}/editar`} className='hover:scale-110 transition-transform'>
+                                <img src={editImg} alt="Edit" className='h-12 w-auto' />
                             </Link>
 
-
-                            <button onClick={() => {setShowPopUp(true); setIdSelecionado(id)}}
-                            className='hover:opacity-50 cursor-pointer'>
-                                <img src={deleteImg} alt="Delete" className='max-h-full w-14'/>
+                            <button 
+                                onClick={() => {setShowPopUp(true); setIdSelecionado(id)}}
+                                className='hover:scale-110 transition-transform cursor-pointer'
+                            >
+                                <img src={deleteImg} alt="Delete" className='h-12 w-auto'/>
                             </button>
                             
                         </div>
-
                     </ul>
                 )}
             )}

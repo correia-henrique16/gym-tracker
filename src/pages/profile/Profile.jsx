@@ -28,10 +28,12 @@ const Profile = () => {
             </div>
 
 
+            <div className="flex gap-5">
+                <LinkBtn to={`/profile/edit`}>Edit Profile</LinkBtn>
 
-            <LinkBtn to={`/profile/edit`}>Edit Profile</LinkBtn>
-
-            <Button onClick={() => setShowPopUp(true)}>Log Out</Button>
+                <Button onClick={() => setShowPopUp(true)}>Log Out</Button>
+            </div>
+            
 
             <ConfirmModel isOpen={showPopUp} onClose={() => setShowPopUp(false)} onConfirm={() => userLogOut()}>
                 Dar Log Out?

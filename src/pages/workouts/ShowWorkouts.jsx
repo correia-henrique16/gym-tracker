@@ -2,16 +2,15 @@ import { Link } from "react-router-dom"
 import useUserContext from "../../hooks/useUserContext"
 import useDbContext from "../../hooks/useDbContext"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
-import DivCentrada from "../../styles/components/DivCentrada"
-import { useParams, useNavigate } from "react-router-dom"
+import DivListar from "../../styles/components/DivListar"
+import TituloListar from "../../styles/components/TituloListar"
+import { useParams } from "react-router-dom"
 import ListWorkouts from "./workout-components/ListWorkouts"
 import addImg from '../../assets/add.png'
 import useWorkouts from "../../hooks/useWorkouts"
 import { useState } from "react"
 
 const ShowWorkouts = () => {
-
-    const navigate = useNavigate()
 
     const [idSelecionado, setIdSelecionado] = useState()
 
@@ -47,21 +46,27 @@ const ShowWorkouts = () => {
 
     
     return (
-        <DivCentrada>
-            <h1 className="m-5 text-3xl font-bold text-texto">{exNome}</h1>
+        <DivListar>
+            <TituloListar>{exNome}</TituloListar>
 
             <ButtonVoltar />
 
-            <ListWorkouts listaWktExerc={listaWktExerc} handleDelete={handleDelete} showPopUp={showPopUp} setShowPopUp={setShowPopUp} idSelecionado={idSelecionado} setIdSelecionado={setIdSelecionado} />
+
+            {listaWktExerc.length == 0 ? (
+                <p className="text-4xl m-4 text-verde font-bold text-center">Sem workouts registados com este exercicio</p>
+            ) : (
+                <ListWorkouts listaWktExerc={listaWktExerc} handleDelete={handleDelete} showPopUp={showPopUp} setShowPopUp={setShowPopUp} idSelecionado={idSelecionado} setIdSelecionado={setIdSelecionado} />
+            )}
+            
 
 
-            <Link to={`/workouts/${exId}/adicionar`} className="fixed top-5 right-5 text-verde cursor-pointer z-2 hover:opacity-50">
+            <Link to={`/workouts/${exId}/adicionar`} className="fixed top-5 right-5 text-verde cursor-pointer z-4 hover:opacity-50">
                 <img src={addImg} alt="Adicionar" className="w-13"/>
             </Link>
 
             
 
-        </DivCentrada>
+        </DivListar>
         
     )
 }

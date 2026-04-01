@@ -1,7 +1,8 @@
 import useDbContext from "../../hooks/useDbContext"
 import useFiltros from "../../hooks/useFiltros"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
-import DivCentrada from "../../styles/components/DivCentrada"
+import TituloListar from "../../styles/components/TituloListar"
+import DivListar from "../../styles/components/DivListar"
 import ExercisesFilters from "./home-components/ExercisesFilters"
 import ListExercises from "./home-components/ListExercises"
 
@@ -24,10 +25,10 @@ const ShowExercises = () => {
 
     
     return (
-        <DivCentrada>
-            <h1 className="m-5 text-3xl font-bold text-texto">
+        <DivListar>
+            <TituloListar>
                 Exercises
-            </h1>
+            </TituloListar>
 
             <ButtonVoltar />
 
@@ -35,7 +36,7 @@ const ShowExercises = () => {
 
             <ListExercises exercicios={exercicios} filtroZona={filtroZona} filtroEspecifico={filtroEspecifico} chooseImg={chooseImg}/>
 
-        </DivCentrada>
+        </DivListar>
         
     )
 }

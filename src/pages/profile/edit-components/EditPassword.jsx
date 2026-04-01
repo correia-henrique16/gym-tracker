@@ -14,18 +14,24 @@ const EditPassword = ({authPass, setAuthPass, confirmPass, setConfirmPass, erro,
                 <InputAuth label="Confirm Password" type="password" id="confirm-input" required
                     value={confirmPass} onChange={e => setConfirmPass(e.target.value)}
                 />
+
+                <div className="flex gap-5">
+                    <Button type="submit">
+                        Change Password
+                    </Button>
+
+                    <Button onClick={() => setEditPass(false)}>
+                        Edit Profile
+                    </Button>
+                </div>
                 
-                <Button type="submit">
-                    Change Password
-                </Button>
+                
 
             </form>
 
             {erro && <p>{erro}</p>}
 
-            <Button onClick={() => setEditPass(false)}>
-                Edit Profile
-            </Button>
+            
         </>
     )
 }
