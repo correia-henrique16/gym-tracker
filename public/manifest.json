@@ -1,0 +1,20 @@
+{
+  "name": "Gym Tracker",
+  "short_name": "GymTracker",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#393E41",
+  "theme_color": "#A3E635",
+  "icons": [
+    {
+      "src": "icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
