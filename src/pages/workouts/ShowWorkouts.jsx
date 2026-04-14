@@ -60,7 +60,7 @@ const ShowWorkouts = () => {
             
 
 
-            <Link to={`/workouts/${exId}/adicionar`} className="fixed top-5 right-5 text-verde cursor-pointer z-4 hover:opacity-50">
+            <Link to={`/workouts/${exId}/adicionar`} className="fixed top-13 right-5 text-verde cursor-pointer z-4 hover:opacity-50">
                 <img src={addImg} alt="Adicionar" className="w-13"/>
             </Link>
 

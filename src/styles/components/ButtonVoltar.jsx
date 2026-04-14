@@ -7,7 +7,7 @@ const ButtonVoltar = () => {
     
     return(
         <button onClick={() => {navigate(-1)}}
-        className="fixed top-5 left-5 text-verde cursor-pointer z-4 hover:opacity-50">
+        className="fixed top-13 left-5 text-verde cursor-pointer z-4 hover:opacity-50">
             <img src={backArrow} alt="Voltar" className="w-13"/>
         </button>
     )
