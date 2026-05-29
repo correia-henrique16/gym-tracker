@@ -1,7 +1,8 @@
 import useStats from "../../../hooks/useStats"
-import useDbContext from "../../../hooks/useDbContext"
+import useDbContext from "../../../hooks/useDbContext" 
 
-const Stats = () => {
+
+const StatsExercicios = ({exercicioMaisTreinado, streakDias, totalTreinos}) => {
 
     const {exercicioMaisPeso, exercicioMaisVolume} = useStats()
 
@@ -9,12 +10,40 @@ const Stats = () => {
 
     const {listaWorkouts} = useDbContext()
 
+    const {total, nome} = exercicioMaisTreinado()
+
 
     return(
-        <section className="w-full max-w-4xl mx-auto p-4 mt-10">
+        <section className="w-full max-w-4xl mx-auto p-4 mt-2">
             <h3 className="text-texto text-center text-2xl uppercase tracking-[0.3em] font-black mb-4">
                 Stats
             </h3>
+
+            <div className="flex flex-col sm:flex-row gap-4 w-full my-8">
+                <div className="flex-1 bg-verde-cinza/20 backdrop-blur-sm p-6 rounded-3xl border border-verde/10 shadow-sm">
+                    <h4 className="text-[10px] uppercase tracking-widest text-verde/70 font-bold mb-3">
+                        Streak de dias de treino
+                    </h4>
+
+                    <div className="flex items-center justify-between mt-1">
+                        <p className="text-4xl font-black text-texto">
+                            {streakDias} <span className="text-2xl text-verde">dias</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div className="flex-1 bg-verde-cinza/20 backdrop-blur-sm p-6 rounded-3xl border border-verde/10 shadow-sm">
+                    <h4 className="text-[10px] uppercase tracking-widest text-verde/70 font-bold mb-3">
+                        Total de exercicios realizados
+                    </h4>
+
+                    <div className="flex items-center justify-between mt-1">
+                        <p className="text-4xl font-black text-texto">
+                            {totalTreinos} <span className="text-2xl text-verde">exercicios</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             {listaWorkouts.length == 0 ? (
                 <div className="bg-verde-cinza/10 p-8 rounded-3xl border border-dashed border-verde/10 text-center">
@@ -62,6 +91,21 @@ const Stats = () => {
                         </div>
                     </div>
 
+                    <div className="flex-1 bg-verde-cinza/20 backdrop-blur-sm p-6 rounded-3xl border border-verde/10 shadow-sm">
+                        <h4 className="text-[10px] uppercase tracking-widest text-verde/70 font-bold mb-3">
+                            Exercicio mais treinado
+                        </h4>
+                        
+                        <p className="text-texto font-semibold text-lg truncate">
+                            {nome}
+                        </p>
+
+                        <div className="flex items-center justify-between mt-1">
+                            <p className="text-4xl font-black text-texto">
+                                {total} <span className="text-2xl uppercase text-verde">x</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             )}
 
@@ -71,4 +115,4 @@ const Stats = () => {
     )
 }
 
-export default Stats
+export default StatsExercicios
