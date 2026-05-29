@@ -2,10 +2,13 @@ import useUserContext from "../../hooks/useUserContext"
 import LinkBtn from "../../styles/components/LinkBtn"
 import DivCentrada from "../../styles/components/DivCentrada"
 import imgInicial from "../../assets/barbell.png"
+import useStats from "../../hooks/useStats"
 
 const Home = () => {
 
     const {userLoading, userInfo} = useUserContext()
+
+    const {streakDias} = useStats()
 
 
     if (userLoading) return <p>A verificar user...</p>
@@ -14,6 +17,9 @@ const Home = () => {
 
     return (
         <DivCentrada>
+            
+            <p>{streakDias}</p>
+
             <h1 className="m-5 text-5xl font-bold text-texto">Home Page</h1>
 
             <img src={imgInicial} alt="Barbell" />
@@ -29,6 +35,8 @@ const Home = () => {
                     Profile
                 </LinkBtn>
             </div>
+
+            
             
         </DivCentrada>
     )
