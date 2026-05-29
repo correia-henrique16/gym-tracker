@@ -55,11 +55,37 @@ const useStats = () => {
         return streak
     }
 
+    const exercicioMaisTreinado = () => {
+        if (listaWorkouts.length === 0) return null
+
+        const contagem = {}
+
+        listaWorkouts.forEach(wkt => {
+            const id = wkt.exercicio?.id
+            const nome = wkt.exercicio?.nome_exercicio
+            if (id) {
+                contagem[id] = {
+                    nome: nome,
+                    total: (contagem[id]?.total || 0) + 1
+                }
+            }
+        })
+
+        const idMaisUsado = Object.keys(contagem).reduce((maximo, atual) =>
+            contagem[maximo].total > contagem[atual].total ? maximo : atual
+        )
+
+        return {
+            nome: contagem[idMaisUsado].nome,
+            total: contagem[idMaisUsado].total
+        }
+    }
+
     const totalTreinos = listaWorkouts.length
 
     return {
         exercicioMaisPeso, exercicioMaisVolume,
-        streakDias: streakDias(), totalTreinos
+        streakDias: streakDias(), totalTreinos, exercicioMaisTreinado
     }
 
 }

@@ -10,11 +10,13 @@ const Home = () => {
 
     const {userLoading, userInfo} = useUserContext()
     const {staticLoading, workoutsLoading} = useDbContext()
-    const {streakDias, totalTreinos} = useStats()
+    const {streakDias, totalTreinos, exercicioMaisTreinado} = useStats()
 
     if (userLoading || staticLoading || workoutsLoading) return <p>Loading...</p>
 
     const {userName, userEmail, userId} = userInfo()
+
+    const {total, nome} = exercicioMaisTreinado()
 
     return (
         <DivCentrada>
@@ -25,6 +27,11 @@ const Home = () => {
             </div>
 
             <Stats/>
+
+            <div>
+                <p>{nome}</p>
+                <p>{total} x</p>
+            </div>
             
 
             <h1 className="m-5 text-5xl font-bold text-texto">Home Page</h1>
