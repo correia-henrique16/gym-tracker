@@ -1,8 +1,7 @@
 const DivCentrada = ({children, className = ""}) => {
     return(
         <div
-            className="flex flex-col items-center justify-center w-screen min-h-screen gap-3 p-5"
-        >
+            className="flex flex-col items-center justify-center w-screen min-h-screen gap-3 p-5 relative">
             {children}
         </div>
     )
