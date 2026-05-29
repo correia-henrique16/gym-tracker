@@ -55,9 +55,11 @@ const useStats = () => {
         return streak
     }
 
+    const totalTreinos = listaWorkouts.length
+
     return {
         exercicioMaisPeso, exercicioMaisVolume,
-        streakDias: streakDias()
+        streakDias: streakDias(), totalTreinos
     }
 
 }

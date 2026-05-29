@@ -33,9 +33,12 @@ const DbProvider = ({children}) => {
 
     useEffect(() => {
         if (userId){
-            setWorkoutsLoading(true)
-            buscarWorkouts(userId)
-            setWorkoutsLoading(false)
+            const fetch = async () => {
+                setWorkoutsLoading(true)
+                await buscarWorkouts(userId)
+                setWorkoutsLoading(false)
+            }
+            fetch()
         }
         
     }, [userId])

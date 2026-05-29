@@ -4,7 +4,6 @@ import Button from "../../styles/components/Button"
 import DivCentrada from "../../styles/components/DivCentrada"
 import useUserContext from "../../hooks/useUserContext"
 import ConfirmModel from "../../styles/components/ConfirmModel"
-import Stats from "./profile-components/Stats"
 
 
 const Profile = () => {
@@ -34,8 +33,6 @@ const Profile = () => {
 
                 <Button onClick={() => setShowPopUp(true)}>Log Out</Button>
             </div>
-
-            <Stats/>
             
 
             <ConfirmModel isOpen={showPopUp} onClose={() => setShowPopUp(false)} onConfirm={() => userLogOut()}>
