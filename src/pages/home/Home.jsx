@@ -20,7 +20,7 @@ const Home = () => {
     return (
         <DivCentrada>
 
-            <div className="w-11/12 top-0 flex justify-between items-center box-border fixed py-5 z-100 bg-fundo/95">
+            <div className="w-11/12 top-0 flex justify-between items-center box-border absolute py-5 z-100 bg-fundo/95">
                 <div className="flex justify-baseline items-center gap-2 cursor-default w-1/3">
                     <img src={imgInicial} alt="Barbell" className="max-h-10"/>
                     <h1 className="text-verde text-xl">Gym Tracker</h1>
