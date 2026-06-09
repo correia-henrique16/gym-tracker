@@ -14,7 +14,7 @@ const StatsExercicios = ({exercicioMaisTreinado, streakDias, totalTreinos}) => {
 
 
     return(
-        <section className="w-full max-w-4xl mx-auto p-4 mt-2">
+        <section className="w-full max-w-4xl mx-auto p-4 mt-15">
             <h3 className="text-texto text-center text-2xl uppercase tracking-[0.3em] font-black mb-4">
                 Stats
             </h3>
