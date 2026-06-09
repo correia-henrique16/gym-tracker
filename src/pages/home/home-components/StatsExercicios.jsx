@@ -10,7 +10,7 @@ const StatsExercicios = ({exercicioMaisTreinado, streakDias, totalTreinos}) => {
 
     const {listaWorkouts} = useDbContext()
 
-    const {total, nome} = exercicioMaisTreinado()
+    const {total, nome} = exercicioMaisTreinado() ?? {}
 
 
     return(
