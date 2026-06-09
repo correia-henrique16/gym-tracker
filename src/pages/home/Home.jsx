@@ -17,8 +17,6 @@ const Home = () => {
 
     const {userName, userEmail, userId} = userInfo()
 
-    const {total, nome} = exercicioMaisTreinado()
-
     return (
         <DivCentrada>
 
