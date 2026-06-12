@@ -50,7 +50,7 @@ const AddWorkout = () => {
 
                 <fieldset className="w-full max-w-sm my-6 p-5 border-2 border-verde/10 rounded-4xl backdrop-blur-sm flex flex-col items-center gap-4">
                     <legend className="px-4 text-lg tracking-[0.3em] text-verde/60">
-                        Sítio
+                        Local
                     </legend>
 
                     <div className="flex flex-wrap justify-center gap-3 w-full">
@@ -90,7 +90,7 @@ const AddWorkout = () => {
                 </fieldset>
                 
                 <Button type="submit" disabled={submitting}>
-                    {submitting ? "A Adicionar..." : "Submit"}
+                    {submitting ? "A Adicionar..." : "Adicionar"}
                 </Button>
             </form>
         </DivCentrada>

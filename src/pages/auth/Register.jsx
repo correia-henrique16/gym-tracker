@@ -16,7 +16,7 @@ const Register = () => {
         <DivCentrada className="flex flex-col items-center justify-center w-screen h-screen">
 
             <h2 className="m-10 text-5xl font-bold text-texto text-center">
-                Register page
+                Criar Conta
             </h2>
 
             <ButtonVoltar/>
@@ -24,7 +24,7 @@ const Register = () => {
             <form className="flex flex-col items-center w-full gap-4"
             onSubmit={registarClick}>
 
-                <InputAuth label="User Name" type="text" placeholder="User Name" id="name-input" maxLength="20" required
+                <InputAuth label="Username" type="text" placeholder="User Name" id="name-input" maxLength="20" required
                     value={authUserName} onChange={e => setAuthUserName(e.target.value)} 
                 />
 
@@ -42,7 +42,7 @@ const Register = () => {
                 />
                 
                 <Button type="submit">
-                    Registar
+                    Criar
                 </Button>
 
                 {erro && <p>{erro}</p>}
