@@ -8,3 +8,7 @@
   --color-verde-cinza: #748B75;
   --color-verde-cinza-hover: #576958;
 }
+
+.hidden {
+  display: none;
+}
