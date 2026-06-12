@@ -46,7 +46,6 @@ const DbProvider = ({children}) => {
     const buscarWorkouts = async (userId) => {
 
         if (!userId || userId === "undefined") {
-            console.log("Waiting ID...");
             return;
         }
 
@@ -65,6 +64,7 @@ const DbProvider = ({children}) => {
             sitio(id, nome_sitio)
         `)
         .eq('user_id', userId)
+        .order('data', {ascending: false})
 
 
         const {data, error} = await query
