@@ -32,7 +32,7 @@ const Login = () => {
             <img src={imgInicial} alt="Barbell" className="w-13"/>
 
             <h2 className="m-10 text-5xl font-bold text-texto text-center">
-                Login page
+                Bem-Vindo
             </h2>
 
             <form className="flex flex-col items-center w-full gap-4"

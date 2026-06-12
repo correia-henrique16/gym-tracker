@@ -11,7 +11,7 @@ const InputAuth = ({label, id, className = "", ...props}) => {
 
             <input {...props}
             id={id}
-            className="rounded-2xl p-1.5 w-70 m-3 border-verde border-3 bg-texto focus:outline-0" />
+            className="rounded-2xl p-1.5 w-70 m-1 border-verde border-2  bg-verde/20 focus:outline-0 text-texto inputs" />
         </div>
     )
 }
