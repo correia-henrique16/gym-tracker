@@ -6,6 +6,7 @@ import useStats from "../../hooks/useStats"
 import useDbContext from "../../hooks/useDbContext"
 import StatsExercicios from "./home-components/StatsExercicios"
 import { Link } from "react-router-dom"
+import Loading from "../../styles/components/Loading"
 
 const Home = () => {
 
@@ -13,7 +14,7 @@ const Home = () => {
     const {staticLoading, workoutsLoading} = useDbContext()
     const {streakDias, totalTreinos, exercicioMaisTreinado} = useStats()
 
-    if (userLoading || staticLoading || workoutsLoading) return <p>Loading...</p>
+    if (userLoading || staticLoading || workoutsLoading) return <Loading/>
 
     const {userName, userEmail, userId} = userInfo()
 

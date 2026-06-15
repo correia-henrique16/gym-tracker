@@ -6,6 +6,7 @@ import InputNumbers from "../../styles/components/InputNumbers"
 import Button from "../../styles/components/Button"
 import DivCentrada from "../../styles/components/DivCentrada"
 import { useEffect } from "react"
+import Loading from "../../styles/components/Loading"
 
 const EditWorkout = () => {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ const EditWorkout = () => {
     const {workoutsLoading, staticLoading, sitios, getWorkoutById} = useDbContext()
 
 
-    if (workoutsLoading || staticLoading) return <p>A carregar treinos...</p>
+    if (workoutsLoading || staticLoading) return <Loading/>
 
 
     const {wktNomeEx, wktPeso, wktReps, wktData, wktSitioId} = getWorkoutById(wktId)

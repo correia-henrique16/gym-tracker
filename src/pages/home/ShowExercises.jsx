@@ -5,23 +5,16 @@ import TituloListar from "../../styles/components/TituloListar"
 import DivListar from "../../styles/components/DivListar"
 import ExercisesFilters from "./home-components/ExercisesFilters"
 import ListExercises from "./home-components/ListExercises"
+import Loading from "../../styles/components/Loading"
 
 const ShowExercises = () => {
-
-    // const {userInfo, userLoading} = useUserContext()
-
-    // const {userId} = userInfo()
 
     const {zonasCorpo, exercicios, especificos, workoutsLoading, staticLoading, chooseImg} = useDbContext()
 
 
     const {filtroZona, setFiltroZona, filtroEspecifico, setFiltroEspecifico} = useFiltros()
 
-
-    
-
-    // if (userLoading) return <p>A carregar...</p>
-    if (staticLoading || workoutsLoading) return <p>A carregar...</p>
+    if (staticLoading || workoutsLoading) return <Loading/>
 
     
     return (

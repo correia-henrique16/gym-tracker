@@ -9,6 +9,7 @@ import ListWorkouts from "./workout-components/ListWorkouts"
 import addImg from '../../assets/add.png'
 import useWorkouts from "../../hooks/useWorkouts"
 import { useState } from "react"
+import Loading from "../../styles/components/Loading"
 
 const ShowWorkouts = () => {
 
@@ -23,9 +24,7 @@ const ShowWorkouts = () => {
     const {workoutsLoading, staticLoading, getExerById, listaWorkouts} = useDbContext()
 
     
-    
-    if (userLoading) return <p>A carregar...</p>
-    if (workoutsLoading || staticLoading) return <p>A carregar treinos...</p>
+    if (workoutsLoading || staticLoading || userLoading) return <Loading/>
 
 
     const listaWktExerc = listaWorkouts.filter(wkt => wkt.exercicio.id == exId)

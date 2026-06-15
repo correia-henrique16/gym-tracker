@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth"
 import { useEffect, useState } from "react"
 import EditGeneral from "./edit-components/EditGeneral"
 import EditPassword from "./edit-components/EditPassword"
+import Loading from "../../styles/components/Loading"
 
 const EditProfile = () => {
 
@@ -27,7 +28,7 @@ const EditProfile = () => {
 
 
 
-    if (userLoading) return <p>A carregar...</p>
+    if (userLoading) return <Loading/>
 
     
     return(

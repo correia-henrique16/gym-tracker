@@ -7,6 +7,7 @@ import Button from "../../styles/components/Button"
 import InputNumbers from "../../styles/components/InputNumbers"
 import useWorkouts from "../../hooks/useWorkouts"
 import { useNavigate } from "react-router-dom"
+import Loading from "../../styles/components/Loading"
 
 const AddWorkout = () => {
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ const AddWorkout = () => {
     const {workoutsLoading, staticLoading, getExerById, sitios} = useDbContext()
 
 
-    if (workoutsLoading || staticLoading) return <p>A carregar treinos...</p>
+    if (workoutsLoading || staticLoading) return <Loading/>
 
 
     const {exNome} = getExerById(exId)
