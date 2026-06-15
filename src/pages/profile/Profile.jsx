@@ -4,12 +4,13 @@ import Button from "../../styles/components/Button"
 import DivCentrada from "../../styles/components/DivCentrada"
 import useUserContext from "../../hooks/useUserContext"
 import ConfirmModel from "../../styles/components/ConfirmModel"
+import Loading from "../../styles/components/Loading"
 
 
 const Profile = () => {
     const {userInfo, loading, userLogOut, showPopUp, setShowPopUp} = useUserContext()
 
-    if (loading) return <p>A verificar user...</p>
+    if (loading) return <Loading/>
 
     const {userName, userEmail} = userInfo()
 
