@@ -22,7 +22,7 @@ const StatsExercicios = ({exercicioMaisTreinado, streakDias, totalTreinos}) => {
             <div className="flex flex-col sm:flex-row gap-4 w-full my-8">
                 <div className="flex-1 bg-verde-cinza/20 backdrop-blur-sm p-6 rounded-3xl border border-verde/10 shadow-sm">
                     <h4 className="text-[10px] uppercase tracking-widest text-verde/70 font-bold mb-3">
-                        Streak de dias de treino
+                        Streak de treino
                     </h4>
 
                     <div className="flex items-center justify-between mt-1">
