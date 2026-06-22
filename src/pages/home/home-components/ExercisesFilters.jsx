@@ -3,7 +3,7 @@ const ExercisesFilters = ({zonasCorpo, filtroZona,  setFiltroZona, especificos, 
     const especificosFiltrados = especificos.filter((esp) => esp.corpo?.id == filtroZona)
 
     return (
-        <section className="w-full max-w-4xl mx-auto mb-10 flex flex-col md:flex-row gap-6 p-6 bg-zinc-800/30 backdrop-blur-md border border-zinc-700/50 rounded-[2rem] shadow-2xl">
+        <section className="w-full max-w-4xl mx-auto mb-10 flex flex-col md:flex-row gap-6 p-6 bg-zinc-800/30 backdrop-blur-md border border-zinc-700/50 rounded-4xl shadow-2xl">
     
             <div className="flex flex-col flex-1 gap-2">
                 <label 
