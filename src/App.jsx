@@ -10,6 +10,7 @@ import EditProfile from './pages/profile/EditProfile.jsx'
 import ShowWorkouts from './pages/workouts/ShowWorkouts.jsx'
 import UserProvider from './context/UserContext.jsx'
 import DbProvider from './context/DbContext.jsx'
+import FiltroProvider from './context/FiltroContext.jsx'
 import EditWorkout from './pages/workouts/EditWorkout.jsx'
 
 
@@ -17,7 +18,9 @@ const RootLayout = () => {
   return(
     <UserProvider>
       <DbProvider>
-        <Outlet/>
+        <FiltroProvider>
+          <Outlet/>
+        </FiltroProvider>
       </DbProvider>
     </UserProvider>
   )

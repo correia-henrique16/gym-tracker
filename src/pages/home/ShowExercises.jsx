@@ -1,5 +1,5 @@
 import useDbContext from "../../hooks/useDbContext"
-import useFiltros from "../../hooks/useFiltros"
+import useFiltrosContext from "../../hooks/useFiltrosContext"
 import ButtonVoltar from "../../styles/components/ButtonVoltar"
 import TituloListar from "../../styles/components/TituloListar"
 import DivListar from "../../styles/components/DivListar"
@@ -12,7 +12,7 @@ const ShowExercises = () => {
     const {zonasCorpo, exercicios, especificos, workoutsLoading, staticLoading, chooseImg} = useDbContext()
 
 
-    const {filtroZona, setFiltroZona, filtroEspecifico, setFiltroEspecifico} = useFiltros()
+    const {filtroZona, setFiltroZona, filtroEspecifico, setFiltroEspecifico} = useFiltrosContext()
 
     if (staticLoading || workoutsLoading) return <Loading/>
 
